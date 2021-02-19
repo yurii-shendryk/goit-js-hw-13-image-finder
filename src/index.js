@@ -1,2 +1,3 @@
 import './styles.scss';
-import './js/fetch';
+import './js/search-image';
+import './js/components/lightbox';

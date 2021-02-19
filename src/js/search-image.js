@@ -1,7 +1,7 @@
 import refs from './refs';
 import apiService from './apiService';
 import updateGalleryMarkup from './update-gallery-markup';
-import LoadMoreBtn from './load-more-button';
+import LoadMoreBtn from './components/load-more-button';
 
 const loadMoreBtn = new LoadMoreBtn({
   selector: '[data-action="load-more"]',
