@@ -1,12 +1,9 @@
 import refs from './refs';
 import apiService from './apiService';
-import updateGalleryMarkup from './update-gallery-markup';
-import LoadMoreBtn from './components/load-more-button';
-
-const loadMoreBtn = new LoadMoreBtn({
-  selector: '[data-action="load-more"]',
-  hidden: true,
-});
+import fetchPhotos from './fetch-photos';
+import creatObserver from './components/infinity-scroll';
+// Если нужно подключить дозагрузку контента с помощью кнокпи load-more включи импорт нижней строки
+// import LoadMoreBtn from './components/load-more-button';
 
 refs.searchForm.addEventListener('submit', onSubmitSearchForm);
 
@@ -19,16 +16,15 @@ function onSubmitSearchForm(event) {
   fetchPhotos();
   form.reset();
 }
-loadMoreBtn.refs.node.addEventListener('click', fetchPhotos);
 
-function fetchPhotos() {
-  loadMoreBtn.disable();
-  apiService.fetchPhotos().then(photos => {
-    updateGalleryMarkup(photos);
-    window.scrollTo({
-      top: document.documentElement.offsetHeight,
-      behavior: 'smooth',
-    });
-    loadMoreBtn.enable();
-  });
-}
+creatObserver(fetchPhotos);
+
+// Догружаем с помощью бесконечного скролла
+
+// Вариант для догрузки контента с помощью кнопки load-more
+// const loadMoreBtn = new LoadMoreBtn({
+//   selector: '[data-action="load-more"]',
+//   hidden: true,
+// });
+
+// loadMoreBtn.refs.node.addEventListener('click', fetchPhotos);

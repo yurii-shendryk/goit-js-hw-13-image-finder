@@ -6,3 +6,21 @@
 .btn-primary.is-hidden {
   display: none;
 }
+
+.on-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: block;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  border-radius: 100%;
+}
+
+.on-top-btn.is-hidden {
+  display: none;
+}
