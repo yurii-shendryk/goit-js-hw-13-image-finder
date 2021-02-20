@@ -11,11 +11,10 @@ function fetchPhotos() {
   refs.spinner.classList.remove('is-hidden');
 
   return apiService.fetchPhotos().then(photos => {
-    if (photos.length === 0) {
-      refs.spinner.classList.add('is-hidden');
-      return;
+    if (photos.length) {
+      updateGalleryMarkup(photos);
     }
-    updateGalleryMarkup(photos);
+
     refs.spinner.classList.add('is-hidden');
 
     // window.scrollTo({
